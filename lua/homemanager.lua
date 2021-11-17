@@ -74,7 +74,7 @@ local function homeManagerPopup(args)
 end
 
 local function build()
-  homeManagerPopup({"build"})
+  homeManagerPopup({"build", "--no-out-link"})
 end
 
 local function switch()
