@@ -1,6 +1,5 @@
 local Job = require("plenary.job")
 local popup = require("plenary.popup")
-local Timer = require("timer")
 local Buffer = require("buffer")
 local cmd = require("cmd")
 local Indicator = require("indicator")
