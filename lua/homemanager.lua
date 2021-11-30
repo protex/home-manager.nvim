@@ -11,15 +11,14 @@ local function createPopup(winHeader)
   local winWidth = math.floor(viewWidth * 0.7)
   local buffer = Buffer:new()
 
-  buffer:replaceLines(0, -1, winHeader)
-
 
   popup.create(buffer.bufnr, {
     width = winWidth,
     minheight = winHeight,
     line = math.floor((viewHeight - winHeight) / 2),
     col = math.floor((viewWidth - winWidth) / 2),
-    border = true
+    border = true,
+    title = winHeader
   })
   return buffer
 end
@@ -30,7 +29,7 @@ local function updateBufferOnStdWrap(buffer, indicator)
     assert(not error, error)
     indicator:stop()
 
-    buffer:appendLines({data})
+    buffer:appendLines({"> " .. data})
   end
 end
 
@@ -49,10 +48,12 @@ local function indicatorGenerator(i)
 end
 
 local function homeManagerPopup(args)
-  local header = {"Running home-manager " .. args[1], "", ""}
-  local s = "asdf"
-  local buffer = createPopup(header)
-  local indicatorLine = 3
+  local title = "home-manager " .. args[1] .. " output"
+  local fullCommand = {"$ home-manager " .. table.concat(args, " "), ""}
+  local buffer = createPopup(title)
+  local indicatorLine = #fullCommand
+
+  buffer:replaceLines(0, -1, fullCommand)
 
   local indicator = Indicator:new(
     buffer,
@@ -67,7 +68,7 @@ local function homeManagerPopup(args)
     on_stdout = vim.schedule_wrap(updateBufferOnStdWrap(buffer, indicator)),
     on_exit = vim.schedule_wrap(function()
       indicator:stop()
-      buffer:appendLines({"Finished..."})
+      buffer:appendLines({"", "Finished..."})
     end),
   }
 end
