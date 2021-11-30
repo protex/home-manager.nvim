@@ -22,7 +22,7 @@ That being said, I am not opposed to someone making a PR to add steps to the rea
 The plugin provides three commands 
 
 `HomeManagerBuild`:
-This command will run `home-manager build`, and print the output in a popup window
+This command will run `home-manager build --no-out-link`, and print the output in a popup window
 
 `HomeManagerSwitch`:
 This command will run `home-manager switch`, and print the output in a popup window
@@ -39,6 +39,9 @@ When the cursor is positioned in a fetchFromGithub statement like the following:
     };
 ```
 it will prefetch the resource and add/update the sha256 value
+
+`HomeManager`
+Exactly like executing `home-manager` in the shell but output will be placed in a nice popup window
 
 # Issues
 This is very much a work in progress and has very little error checking. If you run into any problems, or have a suggestion, please submit an issue.
