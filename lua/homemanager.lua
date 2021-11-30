@@ -1,4 +1,3 @@
-local Job = require("plenary.job")
 local popup = require("plenary.popup")
 local Buffer = require("buffer")
 local cmd = require("cmd")
@@ -78,6 +77,10 @@ end
 
 local function switch()
   homeManagerPopup({"switch"})
+end
+
+local function homeManager(...)
+  homeManagerPopup({...})
 end
 
 -- https://github.com/theHamsta/nvim-treesitter/blob/a5f2970d7af947c066fb65aef2220335008242b7/lua/nvim-treesitter/incremental_selection.lua#L22-L30
@@ -196,5 +199,6 @@ return {
   switch = switch,
   createPopup = createPopup,
   homeManagerPopup = homeManagerPopup,
-  prefetchSha256 = prefetchSha256
+  prefetchSha256 = prefetchSha256,
+  homeManager = homeManager
 }
