@@ -71,14 +71,6 @@ local function homeManagerPopup(args)
   }
 end
 
-local function build()
-  homeManagerPopup({"build", "--no-out-link"})
-end
-
-local function switch()
-  homeManagerPopup({"switch"})
-end
-
 local function homeManager(...)
   homeManagerPopup({...})
 end
@@ -195,8 +187,6 @@ end
 
 
 return {
-  build = build,
-  switch = switch,
   createPopup = createPopup,
   homeManagerPopup = homeManagerPopup,
   prefetchSha256 = prefetchSha256,
