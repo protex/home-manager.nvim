@@ -46,11 +46,12 @@ function Buffer:getLines(start, finish)
   return vim.api.nvim_buf_get_lines(self.bufnr, start, finish, true)
 end
 
-function Buffer:insertLineBelow(line)
+function Buffer:colorLine(line, color)
+
 end
 
 function Buffer:scrollDown()
-  return vim.api.nvim_buf_call(self.bufnr, function() vim.cmd[[norm ]] end)
+  vim.api.nvim_buf_call(self.bufnr, function() vim.cmd[[norm ]] end)
 end
 
 return Buffer
