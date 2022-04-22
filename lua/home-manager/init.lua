@@ -1,7 +1,7 @@
 local popup = require("plenary.popup")
-local Buffer = require("buffer")
-local cmd = require("cmd")
-local Indicator = require("indicator")
+local Buffer = require("home-manager.buffer")
+local cmd = require("home-manager.cmd")
+local Indicator = require("home-manager.indicator")
 
 local function createPopup(winHeader)
   local viewHeight = vim.o.lines - vim.o.cmdheight -2

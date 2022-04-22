@@ -1,4 +1,4 @@
-local Timer = require('timer')
+local Timer = require('home-manager.timer')
 
 Indicator = {}
 Indicator.__index = Indicator
