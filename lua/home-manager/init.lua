@@ -22,13 +22,20 @@ local function createPopup(winHeader)
   return buffer
 end
 
+local function updateBufferAndStopIndicator(buffer, indicator, data)
+  indicator:stop()
+
+  if type(data) ~= "table" then
+    data = {"> " .. data}
+  end
+  buffer:appendLines(data)
+  buffer:scrollDown()
+end
 
 local function updateBufferOnStdWrap(buffer, indicator)
   return function(error, data)
     assert(not error, error)
-    indicator:stop()
-
-    buffer:appendLines({"> " .. data})
+    updateBufferAndStopIndicator(buffer, indicator, data)
   end
 end
 
@@ -66,8 +73,7 @@ local function homeManagerPopup(args)
     on_stderr = vim.schedule_wrap(updateBufferOnStdWrap(buffer, indicator)),
     on_stdout = vim.schedule_wrap(updateBufferOnStdWrap(buffer, indicator)),
     on_exit = vim.schedule_wrap(function()
-      indicator:stop()
-      buffer:appendLines({"", "Finished..."})
+      updateBufferAndStopIndicator(buffer, indicator, {"", "Finished..."})
     end),
   }
 end

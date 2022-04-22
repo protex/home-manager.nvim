@@ -49,4 +49,9 @@ end
 function Buffer:insertLineBelow(line)
 end
 
+function Buffer:scrollDown()
+  print('scrolling')
+  return vim.api.nvim_buf_call(self.bufnr, function() vim.cmd[[norm ]] end)
+end
+
 return Buffer
