@@ -29,6 +29,7 @@ local function updateBufferAndStopIndicator(buffer, indicator, data)
     data = {"> " .. data}
   end
   buffer:appendLines(data)
+  buffer:scrollDown()
 end
 
 local function updateBufferOnStdWrap(buffer, indicator)
