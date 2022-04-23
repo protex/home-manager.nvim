@@ -4,6 +4,7 @@ local cmd = require("home-manager.cmd")
 local Indicator = require("home-manager.indicator")
 local util = require('home-manager.utils')
 local getColorGroup = require('home-manager.colors').getColorGroup
+local loadColorHighlights = require('home-manager.colors').loadColorHighlights
 
 local function createPopup(winHeader)
   local viewHeight = vim.o.lines - vim.o.cmdheight -2
@@ -108,7 +109,7 @@ local function prefetchSha256()
   vim.cmd("normal [{v]}=")
 end
 
-
+loadColorHighlights()
 return {
   createPopup = createPopup,
   homeManagerPopup = homeManagerPopup,

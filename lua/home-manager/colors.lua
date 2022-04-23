@@ -32,7 +32,6 @@ local function loadColorHighlights()
     end
   end
 end
-loadColorHighlights()
 
 local function getColorGroup(line)
   for _, highlightConf in pairs(highlights) do
