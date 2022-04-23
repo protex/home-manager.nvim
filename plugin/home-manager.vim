@@ -10,8 +10,8 @@ lua <<EOF
     complete=require('home-manager.autocomplete')
   })
 EOF
-command! HomeManagerBuild echoerr 'Depricated, please use HomeManager command (with tab completion) instead'
-command! HomeManagerSwitch echoerr 'Depricated, please use HomeManager command (with tab completion) instead'
+command! HomeManagerBuild echoerr 'Deprecated, please use HomeManager command (with tab completion) instead'
+command! HomeManagerSwitch echoerr 'Deprecated, please use HomeManager command (with tab completion) instead'
 
 let &cpo = s:save_cpo
 unlet s:save_cpo

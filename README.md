@@ -37,10 +37,10 @@ When the cursor is positioned in a fetchFromGithub statement like the following:
 ```
 it will prefetch the resource and add/update the sha256 value
 
-`HomeManagerBuild (depricated)`:
+`HomeManagerBuild (deprecated)`:
 This command will run `home-manager build --no-out-link`, and print the output in a popup window
 
-`HomeManagerSwitch (depricated)`:
+`HomeManagerSwitch (deprecated)`:
 This command will run `home-manager switch`, and print the output in a popup window
 
 
