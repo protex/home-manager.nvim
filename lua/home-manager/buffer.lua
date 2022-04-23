@@ -46,12 +46,19 @@ function Buffer:getLines(start, finish)
   return vim.api.nvim_buf_get_lines(self.bufnr, start, finish, true)
 end
 
-function Buffer:colorLine(line, color)
-
+function Buffer:colorPos(lineNumber, startPos, length, colorGroupName)
+  vim.api.nvim_buf_call(self.bufnr, function()
+    vim.fn.matchaddpos(colorGroupName, {{lineNumber, startPos, length}})
+  end)
 end
 
 function Buffer:scrollDown()
   vim.api.nvim_buf_call(self.bufnr, function() vim.cmd[[norm ]] end)
+end
+
+function Buffer:info()
+  local wrappedBufInfo = vim.fn.getbufinfo(self.bufnr)
+  return wrappedBufInfo[1]
 end
 
 return Buffer

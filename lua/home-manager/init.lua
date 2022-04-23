@@ -3,6 +3,7 @@ local Buffer = require("home-manager.buffer")
 local cmd = require("home-manager.cmd")
 local Indicator = require("home-manager.indicator")
 local util = require('home-manager.utils')
+local getColorGroup = require('home-manager.colors').getColorGroup
 
 local function createPopup(winHeader)
   local viewHeight = vim.o.lines - vim.o.cmdheight -2
@@ -26,10 +27,15 @@ end
 local function updateBufferAndStopIndicator(buffer, indicator, data)
   indicator:stop()
 
+  local colorGroup
   if type(data) ~= "table" then
+    colorGroup = getColorGroup(data)
     data = {"> " .. data}
   end
   buffer:appendLines(data)
+  if colorGroup then
+    buffer:colorPos(buffer:info().linecount, 2, string.len(data[1]) - 1, colorGroup)
+  end
   buffer:scrollDown()
 end
 
@@ -82,9 +88,6 @@ end
 local function homeManager(...)
   homeManagerPopup({...})
 end
-
-
-
 
 local function prefetchSha256()
   local buffer = Buffer:new(vim.fn.bufnr('%'))
