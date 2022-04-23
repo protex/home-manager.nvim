@@ -86,8 +86,8 @@ local function homeManagerPopup(args)
   }
 end
 
-local function homeManager(...)
-  homeManagerPopup({...})
+local function homeManager(commandArgs)
+  homeManagerPopup(commandArgs.fargs)
 end
 
 local function prefetchSha256()

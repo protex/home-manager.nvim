@@ -21,11 +21,8 @@ That being said, I am not opposed to someone making a PR to add steps to the rea
 # Usage
 The plugin provides three commands 
 
-`HomeManagerBuild`:
-This command will run `home-manager build --no-out-link`, and print the output in a popup window
-
-`HomeManagerSwitch`:
-This command will run `home-manager switch`, and print the output in a popup window
+`HomeManager`
+Exactly like executing `home-manager` in the shell but output will be placed in a nice popup window. Tab completion is also provided.
 
 `HomeManagerPrefetchSha256`:
 
@@ -40,8 +37,12 @@ When the cursor is positioned in a fetchFromGithub statement like the following:
 ```
 it will prefetch the resource and add/update the sha256 value
 
-`HomeManager`
-Exactly like executing `home-manager` in the shell but output will be placed in a nice popup window
+`HomeManagerBuild (depricated)`:
+This command will run `home-manager build --no-out-link`, and print the output in a popup window
+
+`HomeManagerSwitch (depricated)`:
+This command will run `home-manager switch`, and print the output in a popup window
+
 
 ## Output Highlighting
 The output popup has basic highlighting setup. Currently, lines that beging with 'Activating' are highlighted, as well as any lines that contain '[Ee]rror' or '[Ww]warning'. I tried to find more highlights that home manager applies on its own, but was unable to find any more then I just mentioned. So, there is a way to add new highlight groups and regular expressions should you notice something that should be highlightd but isn't. To do this, create a dictionary that follows the following format:
