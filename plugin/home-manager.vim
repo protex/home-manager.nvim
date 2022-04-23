@@ -3,10 +3,15 @@ if exists('g:loaded_home_manager') | finish | endif
 let s:save_cpo = &cpo
 set cpo&vim
 
-command! HomeManagerBuild lua require'home-manager'.homeManager('build', '--no-out-link')
-command! HomeManagerSwitch lua require'home-manager'.homeManager('switch')
 command! HomeManagerPrefetchSha256 lua require'home-manager'.prefetchSha256()
-command! -nargs=+ HomeManager lua require'home-manager'.homeManager(<f-args>)
+lua <<EOF
+  vim.api.nvim_create_user_command('HomeManager', require'home-manager'.homeManager, {
+    nargs='+',
+    complete=require('home-manager.autocomplete')
+  })
+EOF
+command! HomeManagerBuild echoerr 'Deprecated, please use HomeManager command (with tab completion) instead'
+command! HomeManagerSwitch echoerr 'Deprecated, please use HomeManager command (with tab completion) instead'
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
