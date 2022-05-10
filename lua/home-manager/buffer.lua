@@ -1,4 +1,4 @@
-Buffer = {}
+local Buffer = {}
 Buffer.__index = Buffer
 
 function Buffer:new(bufnr)
